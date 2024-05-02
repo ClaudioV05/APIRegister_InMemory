@@ -2,6 +2,7 @@ using Crud.Infraestructure.Data.Context;
 using Crud.Presentation.Api.Extensions;
 using Crud.Presentation.Api.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,10 +17,8 @@ builder.Services.AddMvc().AddMvcOptions(options => options.OutputFormatters.Add(
 
 builder.Services.AddDbContext<DatabaseContext>();
 
-#region Action Filters.
-builder.Services.AddScoped<FilterActionContextController>();
-builder.Services.AddScoped<FilterActionContextLog>();
-#endregion Action Filters.
+builder.Services.TryAddScoped<FilterActionContextController>();
+builder.Services.TryAddScoped<FilterActionContextLog>();
 
 builder.Services.AddClassesMatchingInterfaces(nameof(Crud));
 
