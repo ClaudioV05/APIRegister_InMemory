@@ -27,6 +27,6 @@ public sealed class DatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseInMemoryDatabase(databaseName: _configuration["ConnectionStrings:DatabaseName"]);
+        optionsBuilder.UseInMemoryDatabase(databaseName: _configuration["ConnectionStrings:DatabaseName"]?.ToString());
     }
 }
