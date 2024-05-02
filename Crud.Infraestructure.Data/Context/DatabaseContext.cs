@@ -29,13 +29,4 @@ public sealed class DatabaseContext : DbContext
     {
         optionsBuilder.UseInMemoryDatabase(databaseName: _configuration["ConnectionStrings:DatabaseName"]);
     }
-
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        builder.Entity<Users>().HasData(new List<Users>()
-        {
-            new () { Id = 1, Name = "Mary", },
-            new () { Id = 2, Name = "Jhon", }
-        });
-    }
 }
