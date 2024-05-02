@@ -1,5 +1,4 @@
 using Crud.Infraestructure.Data.Context;
-using Crud.Infraestructure.Domain.Entities;
 using Crud.Presentation.Api.Extensions;
 using Crud.Presentation.Api.Filters;
 using Microsoft.AspNetCore.Mvc.Formatters;
@@ -20,8 +19,6 @@ builder.Services.AddDbContext<DatabaseContext>();
 #region Action Filters.
 builder.Services.AddScoped<FilterActionContextController>();
 builder.Services.AddScoped<FilterActionContextLog>();
-builder.Services.AddScoped<FilterActionContextFields<Users>>();
-builder.Services.AddScoped<FilterActionContextTables<Users>>();
 #endregion Action Filters.
 
 builder.Services.AddClassesMatchingInterfaces(nameof(Crud));
@@ -62,7 +59,6 @@ else if (app.Environment.IsProduction())
 }
 
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-app.ConfigureExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

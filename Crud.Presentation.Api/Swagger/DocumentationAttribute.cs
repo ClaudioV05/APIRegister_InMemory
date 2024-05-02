@@ -11,7 +11,7 @@ public class DocumentationAttribute : IDocumentFilter
         {
             Version = "v1",
             Title = "Crud",
-            Description = "Generator of Class C#",
+            Description = "Crud in EF in memory",
             TermsOfService = new Uri("https://claudiomildo.net/terms"),
             Contact = new OpenApiContact
             {
